@@ -1,0 +1,22 @@
+{
+  "name": "online-test-platform",
+  "version": "1.0.0",
+  "description": "Professional Online Test Platform - IELTS & IT Tests",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo \"Faqat index.html ni brauzerda oching!\" && start index.html",
+    "dev": "python -m http.server 8000",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "test",
+    "quiz",
+    "ielts",
+    "it",
+    "education",
+    "exam",
+    "online-test"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
