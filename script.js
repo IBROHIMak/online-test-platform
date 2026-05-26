@@ -256,14 +256,7 @@ function displayResults(r) {
     const m = Math.floor(r.timeTaken / 60), s = r.timeTaken % 60;
     document.getElementById('timeTaken').textContent = `${m}:${s.toString().padStart(2, '0')}`;
 
-    // Score badge
-    let badge = '', badgeClass = '';
-    if (r.percentage >= 90)      { badge = '🏆 A\'lo';    badgeClass = 'badge-gold'; }
-    else if (r.percentage >= 75) { badge = '🥈 Yaxshi';   badgeClass = 'badge-silver'; }
-    else if (r.percentage >= 60) { badge = '🥉 Qoniqarli'; badgeClass = 'badge-bronze'; }
-    else                          { badge = '❌ Yetarli emas'; badgeClass = 'badge-fail'; }
-    document.getElementById('resultBadge').textContent  = badge;
-    document.getElementById('resultBadge').className    = `result-badge ${badgeClass}`;
+    // Score badge - olib tashlandi
     document.getElementById('resultUserName').textContent = `${userName} ${userSurname}`;
 
     // Animate circle
@@ -290,6 +283,10 @@ function drawResultsChart(r) {
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    const isDark = document.body.classList.contains('dark');
+    const textColor = isDark ? '#CDD6F4' : '#111827';
+    const labelColor = isDark ? '#A6ADC8' : '#6B7280';
+
     const data = [
         { label: "To'g'ri",    value: r.correct,    color: '#10B981' },
         { label: "Noto'g'ri",  value: r.incorrect,  color: '#EF4444' },
@@ -305,21 +302,18 @@ function drawResultsChart(r) {
         const h = r.total > 0 ? (item.value / r.total) * maxH : 0;
         const y = canvas.height - h - 35;
 
-        // Rounded bar
         ctx.fillStyle = item.color;
         ctx.beginPath();
         ctx.roundRect(x, y, barW, h, [6, 6, 0, 0]);
         ctx.fill();
 
-        // Value
-        ctx.fillStyle = '#111827';
+        ctx.fillStyle = textColor;
         ctx.font = 'bold 18px sans-serif';
         ctx.textAlign = 'center';
         ctx.fillText(item.value, x + barW / 2, y - 8);
 
-        // Label
         ctx.font = '13px sans-serif';
-        ctx.fillStyle = '#6B7280';
+        ctx.fillStyle = labelColor;
         ctx.fillText(item.label, x + barW / 2, canvas.height - 12);
     });
 }

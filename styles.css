@@ -8,26 +8,54 @@
 :root {
     --primary: #4F46E5;
     --primary-dark: #4338CA;
-    --secondary: #6B7280;
     --success: #10B981;
     --danger: #EF4444;
     --warning: #F59E0B;
+
+    /* Light mode tokens */
+    --bg-body-from: #667eea;
+    --bg-body-to: #764ba2;
     --bg-primary: #FFFFFF;
     --bg-secondary: #F9FAFB;
     --bg-tertiary: #F3F4F6;
     --text-primary: #111827;
     --text-secondary: #6B7280;
     --border: #E5E7EB;
-    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --shadow: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.12);
+    --input-bg: #FFFFFF;
+    --nav-item-color: #111827;
+    --option-hover-bg: #F3F4F6;
+    --card-bg: #FFFFFF;
+    --header-bg: #FFFFFF;
+}
+
+/* Dark mode tokens */
+body.dark {
+    --bg-body-from: #0f0c29;
+    --bg-body-to: #302b63;
+    --bg-primary: #1E1E2E;
+    --bg-secondary: #181825;
+    --bg-tertiary: #11111B;
+    --text-primary: #CDD6F4;
+    --text-secondary: #A6ADC8;
+    --border: #313244;
+    --shadow: 0 1px 3px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.4);
+    --input-bg: #181825;
+    --nav-item-color: #CDD6F4;
+    --option-hover-bg: #313244;
+    --card-bg: #1E1E2E;
+    --header-bg: #1E1E2E;
 }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--bg-body-from) 0%, var(--bg-body-to) 100%);
     min-height: 100vh;
     color: var(--text-primary);
     line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
 }
 
 /* Screen Management */
@@ -48,12 +76,13 @@ body {
 
 /* Welcome Screen */
 .welcome-card {
-    background: var(--bg-primary);
+    background: var(--card-bg);
     border-radius: 20px;
     padding: 60px 40px;
     text-align: center;
     box-shadow: var(--shadow-lg);
     animation: fadeInUp 0.6s ease;
+    transition: background 0.3s;
 }
 
 .logo {
@@ -92,6 +121,7 @@ body {
     padding: 40px 30px;
     cursor: pointer;
     transition: all 0.3s ease;
+    color: var(--text-primary);
 }
 
 .test-card:hover {
@@ -126,11 +156,12 @@ body {
 
 /* Instructions Screen */
 .instructions-card {
-    background: var(--bg-primary);
+    background: var(--card-bg);
     border-radius: 20px;
     padding: 50px;
     box-shadow: var(--shadow-lg);
     animation: fadeInUp 0.6s ease;
+    transition: background 0.3s;
 }
 
 .instructions-card h2 {
@@ -151,6 +182,7 @@ body {
     background: var(--bg-secondary);
     border-radius: 10px;
     margin-bottom: 15px;
+    transition: background 0.3s;
 }
 
 .instruction-icon {
@@ -181,6 +213,8 @@ body {
     border-radius: 10px;
     font-size: 1rem;
     transition: border-color 0.3s;
+    background: var(--input-bg);
+    color: var(--text-primary);
 }
 
 .user-info-form input:focus {
@@ -217,10 +251,6 @@ body {
 .btn-secondary {
     background: var(--bg-tertiary);
     color: var(--text-primary);
-}
-
-.btn-secondary:hover {
-    background: var(--border);
 }
 
 .btn-warning {
@@ -264,7 +294,7 @@ body {
 }
 
 .test-header {
-    background: var(--bg-primary);
+    background: var(--header-bg);
     padding: 20px 30px;
     display: flex;
     justify-content: space-between;
@@ -273,6 +303,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+    transition: background 0.3s;
 }
 
 .header-left h3 {
@@ -298,6 +329,7 @@ body {
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--primary);
+    transition: background 0.3s;
 }
 
 .timer.warning {
@@ -324,9 +356,10 @@ body {
 
 /* Progress Bar */
 .progress-container {
-    background: var(--bg-primary);
+    background: var(--header-bg);
     padding: 20px 30px;
     border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
 }
 
 .progress-bar {
@@ -364,11 +397,11 @@ body {
 
 .question-nav {
     width: 300px;
-    background: var(--bg-primary);
+    background: var(--card-bg);
     border-right: 1px solid var(--border);
     padding: 20px;
     overflow-y: auto;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s;
 }
 
 .question-nav.hidden {
@@ -392,6 +425,7 @@ body {
     padding: 15px;
     background: var(--bg-secondary);
     border-radius: 10px;
+    transition: background 0.3s;
 }
 
 .legend-item {
@@ -442,6 +476,8 @@ body {
     font-weight: 600;
     transition: all 0.2s ease;
     position: relative;
+    color: var(--nav-item-color);
+    background: var(--bg-primary);
 }
 
 .nav-item:hover {
@@ -494,10 +530,11 @@ body {
 .question-container {
     max-width: 800px;
     margin: 0 auto;
-    background: var(--bg-primary);
+    background: var(--card-bg);
     border-radius: 15px;
     padding: 40px;
     box-shadow: var(--shadow);
+    transition: background 0.3s;
 }
 
 .question-header {
@@ -567,11 +604,13 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
+    color: var(--text-primary);
+    background: var(--bg-primary);
 }
 
 .option:hover {
     border-color: var(--primary);
-    background: var(--bg-secondary);
+    background: var(--option-hover-bg);
 }
 
 .option.selected {
@@ -609,11 +648,12 @@ body {
 
 /* Results Screen */
 .results-card {
-    background: var(--bg-primary);
+    background: var(--card-bg);
     border-radius: 20px;
     padding: 50px;
     box-shadow: var(--shadow-lg);
     animation: fadeInUp 0.6s ease;
+    transition: background 0.3s;
 }
 
 .results-header {
@@ -692,6 +732,7 @@ body {
     border-radius: 15px;
     text-align: center;
     border: 2px solid var(--border);
+    transition: background 0.3s;
 }
 
 .stat-card.correct {
@@ -733,6 +774,7 @@ body {
     padding: 30px;
     background: var(--bg-secondary);
     border-radius: 15px;
+    transition: background 0.3s;
 }
 
 .performance-chart h3 {
@@ -764,6 +806,7 @@ body {
     border-radius: 10px;
     margin-bottom: 15px;
     border-left: 4px solid var(--border);
+    transition: background 0.3s;
 }
 
 .answer-item.correct {
@@ -836,12 +879,13 @@ body {
 }
 
 .modal-content {
-    background: var(--bg-primary);
+    background: var(--card-bg);
     padding: 40px;
     border-radius: 20px;
     max-width: 500px;
     text-align: center;
     animation: scaleIn 0.3s ease;
+    color: var(--text-primary);
 }
 
 .modal-content h3 {
@@ -944,93 +988,6 @@ body {
 }
 
 /* =============================================
-   Dark Mode
-   ============================================= */
-body.dark {
-    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-}
-
-body.dark .welcome-card,
-body.dark .instructions-card,
-body.dark .results-card,
-body.dark .question-container,
-body.dark .question-nav,
-body.dark .test-header,
-body.dark .progress-container,
-body.dark .modal-content {
-    background: #1F2937;
-    color: #F9FAFB;
-    border-color: #374151;
-}
-
-body.dark .test-card {
-    background: #111827;
-    border-color: #374151;
-    color: #F9FAFB;
-}
-
-body.dark .test-card:hover {
-    border-color: #6366F1;
-}
-
-body.dark .option {
-    border-color: #374151;
-    color: #F9FAFB;
-}
-
-body.dark .option:hover {
-    background: #374151;
-    border-color: #6366F1;
-}
-
-body.dark .option.selected {
-    background: #312e81;
-    border-color: #6366F1;
-}
-
-body.dark .nav-item {
-    border-color: #374151;
-    color: #F9FAFB;
-}
-
-body.dark .nav-legend,
-body.dark .stat-card,
-body.dark .performance-chart,
-body.dark .answer-item,
-body.dark .instruction-item {
-    background: #111827;
-    border-color: #374151;
-}
-
-body.dark .progress-stats,
-body.dark .text-secondary,
-body.dark .legend-item,
-body.dark .answer-details {
-    color: #9CA3AF;
-}
-
-body.dark h1, body.dark h2, body.dark h3, body.dark h4,
-body.dark .question-text, body.dark .stat-value,
-body.dark .answer-item-question {
-    color: #F9FAFB;
-}
-
-body.dark .user-info-form input {
-    background: #111827;
-    border-color: #374151;
-    color: #F9FAFB;
-}
-
-body.dark .btn-secondary {
-    background: #374151;
-    color: #F9FAFB;
-}
-
-body.dark .timer {
-    background: #111827;
-}
-
-/* =============================================
    Toast Notification
    ============================================= */
 .toast {
@@ -1063,23 +1020,6 @@ body.dark .timer {
 .toast-info    { background: #4F46E5; }
 
 /* =============================================
-   Result Badge
-   ============================================= */
-.result-badge {
-    display: inline-block;
-    padding: 10px 28px;
-    border-radius: 30px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-top: 15px;
-}
-
-.badge-gold   { background: #FEF3C7; color: #92400E; }
-.badge-silver { background: #F3F4F6; color: #374151; }
-.badge-bronze { background: #FED7AA; color: #92400E; }
-.badge-fail   { background: #FEE2E2; color: #991B1B; }
-
-/* =============================================
    Correct answer highlight
    ============================================= */
 .correct-answer-text {
@@ -1102,4 +1042,8 @@ body.dark .timer {
    ============================================= */
 #scoreCircle {
     transition: stroke-dashoffset 1.2s ease, stroke 0.5s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--border);
 }
