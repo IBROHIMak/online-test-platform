@@ -122,8 +122,8 @@
                 </div>
                 
                 <div class="user-info-form">
-                    <input type="text" id="userName" placeholder="Ismingizni kiriting" required>
-                    <input type="email" id="userEmail" placeholder="Email (ixtiyoriy)">
+                    <input type="text" id="userFirstName" placeholder="Ismingizni kiriting" required>
+                    <input type="text" id="userLastName" placeholder="Familiyangizni kiriting" required>
                 </div>
                 
                 <div class="button-group">
@@ -152,6 +152,7 @@
                 </div>
             </div>
             <div class="header-right">
+                <button class="btn btn-icon" id="darkModeBtn" onclick="toggleDarkMode()" title="Dark Mode">🌙</button>
                 <button class="btn btn-icon" onclick="toggleFullscreen()" title="Fullscreen">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
@@ -259,7 +260,8 @@
                         </svg>
                     </div>
                     <h2>Test Yakunlandi!</h2>
-                    <p class="results-subtitle">Sizning natijangiz</p>
+                    <p class="results-subtitle" id="resultUserName"></p>
+                    <div id="resultBadge" class="result-badge"></div>
                 </div>
 
                 <div class="score-display">
