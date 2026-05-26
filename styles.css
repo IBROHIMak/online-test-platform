@@ -291,6 +291,16 @@ body {
 #testScreen {
     padding: 0;
     background: var(--bg-secondary);
+    transition: background 0.3s;
+}
+
+.question-area {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    position: relative;
+    background: var(--bg-secondary);
+    transition: background 0.3s;
 }
 
 .test-header {
@@ -369,7 +379,6 @@ body {
     overflow: hidden;
     margin-bottom: 15px;
 }
-
 .progress-fill {
     height: 100%;
     background: linear-gradient(90deg, var(--primary), #7C3AED);
@@ -393,6 +402,8 @@ body {
 .test-content {
     display: flex;
     height: calc(100vh - 200px);
+    background: var(--bg-secondary);
+    transition: background 0.3s;
 }
 
 .question-nav {
@@ -506,13 +517,6 @@ body {
 }
 
 /* Question Area */
-.question-area {
-    flex: 1;
-    padding: 30px;
-    overflow-y: auto;
-    position: relative;
-}
-
 .nav-toggle {
     display: none;
     position: fixed;
@@ -582,7 +586,6 @@ body {
     margin-bottom: 30px;
     line-height: 1.8;
 }
-
 .question-image {
     max-width: 100%;
     border-radius: 10px;
@@ -615,7 +618,7 @@ body {
 
 .option.selected {
     border-color: var(--primary);
-    background: #EEF2FF;
+    background: var(--option-hover-bg);
 }
 
 .option-label {
@@ -628,6 +631,8 @@ body {
     justify-content: center;
     font-weight: 600;
     flex-shrink: 0;
+    color: var(--text-primary);
+    background: var(--bg-primary);
 }
 
 .option.selected .option-label {
@@ -638,6 +643,7 @@ body {
 
 .option-text {
     flex: 1;
+    color: var(--text-primary);
 }
 
 .question-actions {
