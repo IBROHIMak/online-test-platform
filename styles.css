@@ -1053,3 +1053,34 @@ body {
 .btn-secondary:hover {
     background: var(--border);
 }
+
+/* IELTS Band Score */
+.ielts-band-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(135deg, #4F46E5, #7C3AED);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 16px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ielts-band-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.ielts-band-score {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.ielts-band-desc {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-style: italic;
+}

@@ -248,16 +248,31 @@ function calculateResults() {
 
 function displayResults(r) {
     document.getElementById('scoreValue').textContent = r.correct;
+    document.getElementById('scoreTotalDisplay').textContent = r.total;
     document.getElementById('scorePercentage').textContent = r.percentage + '%';
-    document.getElementById('correctAnswers').textContent  = r.correct;
+    document.getElementById('correctAnswers').textContent   = r.correct;
     document.getElementById('incorrectAnswers').textContent = r.incorrect;
     document.getElementById('unansweredCount').textContent  = r.unanswered;
 
     const m = Math.floor(r.timeTaken / 60), s = r.timeTaken % 60;
     document.getElementById('timeTaken').textContent = `${m}:${s.toString().padStart(2, '0')}`;
 
-    // Score badge - olib tashlandi
     document.getElementById('resultUserName').textContent = `${userName} ${userSurname}`;
+
+    // IELTS band score
+    const bandEl = document.getElementById('ieltsband');
+    if (currentTestType === 'ielts') {
+        const band = getIELTSBand(r.percentage);
+        bandEl.style.display = 'block';
+        bandEl.innerHTML = `
+            <div class="ielts-band-box">
+                <span class="ielts-band-label">Taxminiy IELTS Band:</span>
+                <span class="ielts-band-score">${band.score}</span>
+                <span class="ielts-band-desc">${band.desc}</span>
+            </div>`;
+    } else {
+        bandEl.style.display = 'none';
+    }
 
     // Animate circle
     const circumference = 2 * Math.PI * 90;
@@ -268,14 +283,26 @@ function displayResults(r) {
     setTimeout(() => {
         circle.style.transition = 'stroke-dashoffset 1.2s ease';
         circle.style.strokeDashoffset = offset;
-        // Color based on score
-        if (r.percentage >= 75) circle.style.stroke = '#10B981';
+        if (r.percentage >= 75)      circle.style.stroke = '#10B981';
         else if (r.percentage >= 60) circle.style.stroke = '#F59E0B';
-        else circle.style.stroke = '#EF4444';
+        else                          circle.style.stroke = '#EF4444';
     }, 100);
 
     drawResultsChart(r);
     displayDetailedAnswers(r.detailedAnswers);
+}
+
+function getIELTSBand(percentage) {
+    if (percentage >= 95) return { score: '8.5 - 9.0', desc: 'Expert foydalanuvchi' };
+    if (percentage >= 87) return { score: '8.0',       desc: 'Juda yaxshi foydalanuvchi' };
+    if (percentage >= 80) return { score: '7.5',       desc: 'Yaxshi foydalanuvchi' };
+    if (percentage >= 72) return { score: '7.0',       desc: 'Yaxshi foydalanuvchi' };
+    if (percentage >= 65) return { score: '6.5',       desc: 'Malakali foydalanuvchi' };
+    if (percentage >= 57) return { score: '6.0',       desc: 'Malakali foydalanuvchi' };
+    if (percentage >= 50) return { score: '5.5',       desc: "O'rtacha foydalanuvchi" };
+    if (percentage >= 42) return { score: '5.0',       desc: "O'rtacha foydalanuvchi" };
+    if (percentage >= 35) return { score: '4.5',       desc: 'Cheklangan foydalanuvchi' };
+    return                       { score: '4.0 yoki past', desc: 'Cheklangan foydalanuvchi' };
 }
 
 function drawResultsChart(r) {
