@@ -293,16 +293,21 @@ function displayResults(r) {
 }
 
 function getIELTSBand(percentage) {
-    if (percentage >= 95) return { score: '8.5 - 9.0', desc: 'Expert foydalanuvchi' };
-    if (percentage >= 87) return { score: '8.0',       desc: 'Juda yaxshi foydalanuvchi' };
-    if (percentage >= 80) return { score: '7.5',       desc: 'Yaxshi foydalanuvchi' };
-    if (percentage >= 72) return { score: '7.0',       desc: 'Yaxshi foydalanuvchi' };
-    if (percentage >= 65) return { score: '6.5',       desc: 'Malakali foydalanuvchi' };
-    if (percentage >= 57) return { score: '6.0',       desc: 'Malakali foydalanuvchi' };
-    if (percentage >= 50) return { score: '5.5',       desc: "O'rtacha foydalanuvchi" };
-    if (percentage >= 42) return { score: '5.0',       desc: "O'rtacha foydalanuvchi" };
-    if (percentage >= 35) return { score: '4.5',       desc: 'Cheklangan foydalanuvchi' };
-    return                       { score: '4.0 yoki past', desc: 'Cheklangan foydalanuvchi' };
+    if (percentage >= 95) return { score: '9.0',         desc: 'Expert foydalanuvchi' };
+    if (percentage >= 90) return { score: '8.5',         desc: 'Expert foydalanuvchi' };
+    if (percentage >= 85) return { score: '8.0',         desc: 'Juda yaxshi foydalanuvchi' };
+    if (percentage >= 80) return { score: '7.5',         desc: 'Juda yaxshi foydalanuvchi' };
+    if (percentage >= 72) return { score: '7.0',         desc: 'Yaxshi foydalanuvchi' };
+    if (percentage >= 65) return { score: '6.5',         desc: 'Malakali foydalanuvchi' };
+    if (percentage >= 57) return { score: '6.0',         desc: 'Malakali foydalanuvchi' };
+    if (percentage >= 50) return { score: '5.5',         desc: "O'rtacha foydalanuvchi" };
+    if (percentage >= 42) return { score: '5.0',         desc: "O'rtacha foydalanuvchi" };
+    if (percentage >= 35) return { score: '4.5',         desc: 'Cheklangan foydalanuvchi' };
+    if (percentage >= 27) return { score: '4.0',         desc: 'Cheklangan foydalanuvchi' };
+    if (percentage >= 20) return { score: '3.5',         desc: 'Juda cheklangan foydalanuvchi' };
+    if (percentage >= 13) return { score: '3.0',         desc: 'Juda cheklangan foydalanuvchi' };
+    if (percentage >= 7)  return { score: '2.5',         desc: "Minimal foydalanuvchi" };
+    return                       { score: '1.0 - 2.0',   desc: "Minimal foydalanuvchi" };
 }
 
 function drawResultsChart(r) {
